@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Tiles
+comment0.text=\n\ The\ 2D\ array\ for\ tiles\ and\ associated\ methods\ \n\n\ Author\:\ Brendan\ Laking\n\ File\:\ Tiles.java\n\ Modified\:\ 2025.04.09\n
+comment1.params=width\ height
+comment1.target=Tiles(int,\ int)
+comment2.params=spacingX\ spacingY
+comment2.target=java.lang.String\ generateBoardString(int,\ int)
+comment3.params=spacingX\ spacingY
+comment3.target=java.lang.String\ generateBoardHeader(int,\ int)
+comment4.params=tileX\ tileType
+comment4.target=boolean\ dropTile(int,\ TileType)
+comment5.params=placedX\ placedY\ streakLength\ type
+comment5.target=java.lang.Boolean\ hasWon(int,\ int,\ int,\ TileType)
+numComments=6

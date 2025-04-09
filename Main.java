@@ -53,9 +53,11 @@ public class Main {
             } else {
                 if(tiles.hasWon(dropX - 1, tiles.dropY - 1, 4, turn)) {
                     if(turn == TileType.X) {
-                        System.out.println("X WON");         
+                        System.out.println("X WON");     
+                        break;
                     } else {
                         System.out.println("O WON!");
+                        break;
                     }
                 }
             }

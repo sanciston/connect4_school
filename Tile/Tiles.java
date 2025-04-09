@@ -8,10 +8,10 @@ package Tile;
  */
 
 public class Tiles {
-    public TileType[][] type;
+    public TileType[][] type; 
     public int width;
     public int height;
-    public int dropY;
+    public int dropY; 
     
     public Tiles(int width, int height) {
         this.type = new TileType[width][height];
@@ -21,11 +21,13 @@ public class Tiles {
         
         for(int y = 0; y < height; y++) {
             for(int x = 0; x < width; x++) {
-                this.type[x][y] = TileType.EMPTY;
+                this.type[x][y] = TileType.EMPTY; //Reset the tiles at the start of the game to empty
             }
         }
     }
     
+    //The board string is the visual representation of the game board stored as a string
+    //Spacing X and Y is the spacing between tiles
     public String generateBoardString(int spacingX, int spacingY) {
         String boardString = "";
         
@@ -52,6 +54,7 @@ public class Tiles {
         return boardString;
     }
     
+    //The board header is the header above the game board showing the coords for example in a 7 wide board it would be: "1 2 3 4 5 6 7"
     public String generateBoardHeader(int spacingX, int spacingY) {
         String headerString = "";
         
@@ -70,33 +73,36 @@ public class Tiles {
         return headerString;        
     }
     
+    //Lowers the tile down until it reaches the bottom. Returns true if the tile was dropped in a valid location, returns false if the tile was placed in a invalid location
     public boolean dropTile(int tileX, TileType tileType) {
         boolean tileInPlace = false;
         int tileY = 0;
         
-        if(tileX > 0) {
+        //Check if the tile is already in place.
+        if(tileX > 0) { 
             if(this.type[tileX - 1][0] != TileType.EMPTY) {
-                return false;
+                return false; //If the tile has been dropped in an invaid positon return false
             }
         } else {
-            return false;
+            return false; 
         }
         
+        //Lower the tile into place
         while(!tileInPlace) {
             if(tileY < this.height - 1) {
                 if(this.type[tileX - 1][tileY + 1] != TileType.EMPTY) {
-                    tileInPlace = true;            
+                    tileInPlace = true; //If the tile touches a tile stop lowering it
                 }
             }
             
             if(tileY == this.height - 1) {
-                tileInPlace = true;
+                tileInPlace = true; //If the tile touches the bottom stop lowering it
             }
             tileY++;
         }
-        this.dropY = tileY;
+        this.dropY = tileY; //Get the Y location of the tile once placed
         
-        this.type[tileX - 1][tileY - 1] = tileType; 
+        this.type[tileX - 1][tileY - 1] = tileType; //Change the tile type
         return true;
     }
     
